@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    const root = document.body;
+    if (darkMode) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="app">
+      <nav className="navbar">
+        <h1>☕Lava Jongue</h1>
+        <button onClick={ () => setDarkMode (!darkMode)} className="dark-mode-toggle">
+        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </nav>
+
+      <main className="content">
+        <h2>Welcome to the Code Café</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Switch to Light Mode for espresso-fueled mornings ☀️ or Dark Mode for cozy late-night coding ☕🌙.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <section className="cards">
+        <div className="card">🍵 Frontend Latte</div>
+        <div className="card">🍪 Backend Biscuit</div>
+        <div className="card">🎧 Chill Dev Beats</div>
+
+        </section>
+      </main>
     </div>
   );
 }
