@@ -26,7 +26,7 @@ function App() {
       </nav>
 
       <main className="content">
-        <h2>Welcome to the Code Café</h2>
+        <h2>Welcome to the Lava Café</h2>
         <p>
         Switch to Light Mode for espresso-fueled mornings ☀️ or Dark Mode for cozy late-night coding ☕🌙.
         </p>
